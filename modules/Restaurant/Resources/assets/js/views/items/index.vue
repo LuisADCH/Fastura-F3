@@ -1,4 +1,43 @@
 <template>
+  <template>
+  <div>
+    <div class="category-section">
+      <h2>Categorías</h2>
+    </div>
+    <div class="product-section">
+      <h2>Productos</h2>
+    </div>
+
+    <div class="provider-section">
+      <h2>Proveedores</h2>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+    };
+  },
+  methods: {
+  }
+}
+</script>
+
+<style scoped>
+.category-section {
+  margin-bottom: 20px;
+}
+
+.product-section {
+  margin-bottom: 20px;
+}
+
+.provider-section {
+  margin-bottom: 20px;
+}
+</style>
   <div>
     <div class="page-header pr-0">
       <h2>
@@ -13,6 +52,7 @@
       </ol>
       <div class="right-wrapper pull-right">
         <template>
+          
           <!-- v-if="typeUser === 'admin'" -->
           <!-- <button type="button" class="btn btn-custom btn-sm  mt-2 mr-2" @click.prevent="clickImport()"><i class="fa fa-upload"></i> Importar</button>-->
           <button

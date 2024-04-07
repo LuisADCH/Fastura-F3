@@ -27,6 +27,7 @@
                         <th>Vendedor</th>
                         <th class="text-center">Apertura</th>
                         <th class="text-center">Cierre</th>
+                        <th class="text-center">Descripcion</th>
                         <th>Saldo inicial</th>
                         <th>Saldo final</th>
                         <!-- <th>Ingreso</th> -->

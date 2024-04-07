@@ -17,7 +17,7 @@
                 <h2>
                     <el-switch
                         v-model="search_item_by_barcode"
-                        active-text="Buscar con escaner de código de barras"
+                        active-text="BUSCA PE"
                         @change="changeSearchItemBarcode"
                     ></el-switch>
                 </h2>
@@ -94,7 +94,7 @@
             <div class="col-md-4">
                 <div class="right-wrapper">
                     <h2 class="text-sm pr-5" style="font-size: 14px;">
-                        T/C {{ form.exchange_rate_sale }}
+                        T/C SENATI {{ form.exchange_rate_sale }}
                     </h2>
                     <h2 class="text-sm  pull-right" style="font-size: 14px;">{{ user.name }}</h2>
                 </div>

@@ -47,10 +47,13 @@
                             <div class="float-left">
                                 <a href="/ecommerce" class="btn btn-outline-secondary">Continuar Comprando</a>
                             </div><!-- End .float-left -->
-
+                            <td>
+                                <a href="/order-details/@{{ row.order_id }}" class="btn btn-outline-secondary btn-sm">Ver Detalles</a>
+                            </td>
                             <div class="float-right">
                                 <a href="#" @click="clearShoppingCart"
                                     class="btn btn-outline-secondary btn-clear-cart">Limpiar Carrito</a>
+                                    
                                 <a href="#" class="btn btn-outline-secondary btn-update-cart">Update Shopping Cart</a>
                             </div><!-- End .float-right -->
                         </td>

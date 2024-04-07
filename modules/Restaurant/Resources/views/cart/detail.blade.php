@@ -85,7 +85,8 @@
                         <td>
                             <div v-if="row.status_order_id < 4">
                                 <button v-if="phone_whatsapp" class="btn btn-default btn-sm text-success" @click="clickSendWhatsapp(row.order_id)" ><i class="fab fa-whatsapp fa-2x"></i>
-                                </button>
+                                    <i class="fab fa-whatsapp fa-2x"></i>
+                            </button>
                             </div>
                         </td>
                     </tr>

@@ -60,6 +60,17 @@ export default {
     };
   },
   methods: {
+  async fetchData() {
+    try {
+      const response = await axios.get('/api/items');
+      this.items = response.data;
+    } catch (error) {
+      console.error('Error al cargar los datos:', error);
+      this.errorMessage = 'Error al cargar los datos. Inténtelo de nuevo más tarde.';
+    }
+  }
+}
+  methods: {
   }
 }
 </script>

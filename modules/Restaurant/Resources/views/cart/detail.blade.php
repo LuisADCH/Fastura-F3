@@ -75,6 +75,9 @@
                             @{{ row.order_id }}
                         </td>
                         <td>S/ @{{ row.total }}</td>
+                        <td>
+                            <span class="badge badge-{{ getStatusBadgeClass(row.status_order_id) }}">@{{ row.status_order_description }}</span>
+                        </td>
                         <td>@{{ row.status_order_description }}</td>
                         <td>
                             <div v-if="row.status_order_id < 4">
@@ -854,6 +857,21 @@
         return true;
     }
 
+    methods: {
+        getStatusBadgeClass(statusOrderId) {
+            switch (statusOrderId) {
+                case 1:
+                    return "warning"; // En proceso
+                case 2:
+                    return "primary"; // Enviado
+                case 3:
+                    return "success"; // Entregado
+                default:
+                    return "secondary"; // Otro estado
+            }
+        }
+    }
+}
 </script>
 
 @endpush

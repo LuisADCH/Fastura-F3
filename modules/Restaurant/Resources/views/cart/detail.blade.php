@@ -35,6 +35,7 @@
                         <td>
                             <button type="button" @click="deleteItem(row.id, index)"
                                 class="btn btn-outline-danger btn-sm"><i class="icon-cancel"></i></button>
+                                <i class="far fa-trash-alt"></i>
                         </td>
                     </tr>
 

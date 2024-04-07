@@ -50,7 +50,7 @@
                             <div class="float-right">
                                 <a href="#" @click="clearShoppingCart"
                                     class="btn btn-outline-secondary btn-clear-cart">Limpiar Carrito</a>
-                                <!--<a href="#" class="btn btn-outline-secondary btn-update-cart">Update Shopping Cart</a> -->
+                                <a href="#" class="btn btn-outline-secondary btn-update-cart">Update Shopping Cart</a>
                             </div><!-- End .float-right -->
                         </td>
                     </tr>

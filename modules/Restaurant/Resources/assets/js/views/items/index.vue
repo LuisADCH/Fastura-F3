@@ -16,6 +16,32 @@
 </template>
 
 <script>
+  import { required, minLength } from 'vuelidate/lib/validators';
+
+export default {
+  data() {
+    return {
+      formData: {
+        name: '',
+        email: ''
+      }
+    };
+  },
+  validations: {
+    formData: {
+      name: { required, minLength: minLength(3) },
+      email: { required, email }
+    }
+  },
+  methods: {
+    submitForm() {
+      this.$v.formData.$touch();
+      if (!this.$v.formData.$error) {
+        // Enviar datos al servidor
+      }
+    }
+  }
+}
   data() {
     return {
         searchQuery: ''

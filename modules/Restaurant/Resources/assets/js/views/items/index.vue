@@ -6,6 +6,7 @@
     </div>
     <div class="product-section">
       <h2>Productos</h2>
+      <input type="text" v-model="searchQuery" placeholder="Buscar...">
     </div>
 
     <div class="provider-section">
@@ -15,6 +16,18 @@
 </template>
 
 <script>
+  data() {
+    return {
+        searchQuery: ''
+    };
+},
+computed: {
+    filteredItems() {
+        return this.items.filter(item => {
+            return item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+        });
+    }
+}
 export default {
   data() {
     return {

@@ -15,6 +15,27 @@
   </div>
 </template>
 
+<style scoped>
+/* Define tu clase de estilo para los botones */
+.custom-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: #45a049;
+}
+</style>
+
 <script>
   import { required, minLength } from 'vuelidate/lib/validators';
 

@@ -41,7 +41,7 @@
             <th class="text-center">Stock General</th>
             <th class="text-center">Imagen</th>
             <th class="text-center">Categoría</th>
-
+            <th class="text-center">Proveedores</th>
             <th class="text-center">Visible en Restaurant</th>
             <th class="text-right">Acciones</th>
           </tr>
@@ -63,6 +63,13 @@
             </td>
             <td>
               {{row.category_description}}
+            </td>
+            <td> 
+              <ul>
+                <li v-for="provider in row.providers" :key="provider.id">
+                  {{ provider.name }}
+                </li>
+              </ul>
             </td>
             <td class="text-center">
               <el-checkbox

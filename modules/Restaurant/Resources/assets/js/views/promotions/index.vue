@@ -36,6 +36,7 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th class="text-center">Imagen</th>
+            <th class="text-center">Valoración</th>
             <th class="text-right">Acciones</th>
           </tr>
           <tr></tr>
@@ -86,9 +87,14 @@ export default {
 
       showImageDetail: false,
       resource: "restaurant/promotions",
-      recordId: null
-    };
-  },
+      recordId: null,
+      promotions: [
+        { id: 1, name: "Promoción 1", description: "Descripción 1", image_url: "imagen1.jpg", rating: 4.5 },
+        { id: 2, name: "Promoción 2", description: "Descripción 2", image_url: "imagen2.jpg", rating: 3.8 },
+        ]
+      };
+    },
+
   created() {},
   methods: {
     clickCreate(recordId = null) {

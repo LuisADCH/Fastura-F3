@@ -18,6 +18,15 @@ use Modules\Dashboard\Traits\TotalsTrait;
 class DashboardData
 {
 
+    // Nuevo código con todos los colores en formato rgb
+    protected static $colors = [
+        'white' => ['rgb(16, 168, 206)', 'rgb(153, 16, 16)'],  // Blanco suave y gris más claro
+        'blue' => ['rgb(108, 92, 231)', 'rgb(255, 123, 167)'],  // Azul morado suave y rosa claro
+        'green' => ['rgb(46, 213, 115)', 'rgb(135, 255, 195)'],  // Verde claro y verde menta
+        'red' => ['rgb(255, 107, 129)', 'rgb(119, 185, 200)'],  // Rojo coral y azul suave
+        'dark' => ['rgb(31, 176, 216)', 'rgb(60, 17, 218)'],  // Gris oscuro y gris medio
+    ];
+
     use TotalsTrait;
 
     public function data($request)
@@ -136,7 +145,11 @@ class DashboardData
         $sale_note_total_payment = $sale_note_total_payment_pen + $sale_note_total_payment_usd;
 
         $sale_note_total_to_pay = $sale_note_total - $sale_note_total_payment;
-
+        $configuration = Configuration::find(1); 
+        $visual = $configuration ? json_decode(json_encode($configuration->visual), true) : [];
+        
+        $theme = $visual['sidebar_theme'] ?? 'blue'; // Definir el tema desde la configuración
+        $graph_colors = self::$colors[$theme];
         return [
             'totals' => [
                 'total_payment' => number_format($sale_note_total_payment,2, ".", ""),
@@ -149,16 +162,12 @@ class DashboardData
                     [
                         'label' => 'Notas de venta',
                         'data' => [round($sale_note_total_payment,2), round($sale_note_total_to_pay,2)],
-                        'backgroundColor' => [
-                            'rgb(20, 120, 250)',
-                            'rgb(252, 78, 75)',
-                        ]
+                        'backgroundColor' => $graph_colors
                     ]
                 ],
             ]
         ];
     }
-
 
     /**
      * 
@@ -413,7 +422,15 @@ class DashboardData
     private function totals($establishment_id, $date_start, $date_end, $period, $month_start, $month_end)
     {
 
+                //Cargar configuración guardada del visual setting
+        $configuration = Configuration::find(1);
+        $visual = $configuration ? json_decode(json_encode($configuration->visual), true) : [];
+
+        $theme = $visual['sidebar_theme'] ?? 'blue'; // Definir el tema desde la configuración
+        $graph_colors = self::$colors[$theme];
+
         if($date_start && $date_end){
+            
             $sale_notes = SaleNote::query()->where('establishment_id', $establishment_id)
                                            ->where('changed', false)
                                            ->whereBetween('date_of_issue', [$date_start, $date_end])
@@ -547,7 +564,7 @@ class DashboardData
                     [
                         'label' => 'Total notas de venta',
                         'data' => array_values($data_array['sale_notes_array']),
-                        'backgroundColor' => 'rgb(252, 78, 75)',
+                        'backgroundColor' => $graph_colors,
                         'borderColor' => 'rgb(252, 78, 75)',
                         'borderWidth' => 1,
                         'fill' => false,
@@ -819,6 +836,14 @@ class DashboardData
 
     private function balance($establishment_id, $date_start, $date_end){
 
+        //Cargar configuración guardada del visual setting
+        $configuration = Configuration::find(1);
+        $visual = $configuration ? json_decode(json_encode($configuration->visual), true) : [];
+
+        $theme = $visual['sidebar_theme'] ?? 'blue'; // Definir el tema desde la configuración
+        $graph_colors = self::$colors[$theme];
+
+        
         $document = $this->get_document_totals($establishment_id, $date_start, $date_end);
         $sale_note = $this->get_sale_note_totals($establishment_id, $date_start, $date_end);
         $purchase = $this->get_purchase_totals($establishment_id, $date_start, $date_end);
@@ -866,10 +891,8 @@ class DashboardData
                     [
                         'label' => 'Grafico',
                         'data' => [round($all_totals,2), round($all_totals_payment,2)],
-                        'backgroundColor' => [
-                            'rgb(20, 120, 250)',
-                            'rgb(252, 78, 75)',
-                        ]
+                        'backgroundColor' => $graph_colors
+                        
                     ]
                 ],
             ]
